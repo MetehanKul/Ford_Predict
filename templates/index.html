@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ford Araç Fiyat Tahmini</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/styles.css') }}">
+    <script src="{{ url_for('static', filename='js/scripts.js') }}" defer></script>
+</head>
+<body>
+    <div class="container">
+        <h2>Ford Araç Fiyat Tahmini</h2>
+        <form id="predictionForm" action="/predict" method="post">
+            <div class="form-group">
+                <label for="model">Model</label>
+                <select id="model" name="model" required>
+                    <option value="">Seçiniz</option>
+                    <!-- Seçenekler JavaScript ile eklenecek -->
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="year">Yıl</label>
+                <input type="number" id="year" name="year" required>
+            </div>
+            <div class="form-group">
+                <label for="transmission">Şanzıman</label>
+                <select id="transmission" name="transmission" required>
+                    <option value="">Seçiniz</option>
+                    <!-- Seçenekler JavaScript ile eklenecek -->
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="mileage">Kilometre</label>
+                <input type="number" id="mileage" name="mileage" required>
+            </div>
+            <div class="form-group">
+                <label for="fuelType">Yakıt Türü</label>
+                <select id="fuelType" name="fuelType" required>
+                    <option value="">Seçiniz</option>
+                    <!-- Seçenekler JavaScript ile eklenecek -->
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="tax">Vergi($)</label>
+                <input type="number" id="tax" name="tax" required>
+            </div>
+            <div class="form-group">
+                <label for="mpg">Yakıt Tüketimi (MPG)</label>
+                <input type="number" id="mpg" name="mpg" step="0.1" required>
+            </div>
+            <div class="form-group">
+                <label for="engineSize">Motor Hacmi</label>
+                <input type="number" id="engineSize" name="engineSize" step="0.1" required>
+            </div>
+            <button type="submit">Tahmin Et</button>
+        </form>
+        <div id="result">
+            {% if prediction_text %}
+            <h3>{{ prediction_text }}</h3>
+            {% endif %}
+        </div>
+    </div>
+</body>
+</html>
+
+
+<script></script>
